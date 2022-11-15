@@ -26,7 +26,22 @@ val es8 = calcularError(0.785398, f7)
     val n = 2
     val h = (b-a)/n
     
-    h/3 * (1 to n/2).map(j => (f(a+2 * j * h - 2) + 4*f(a+2 * j * h - 1) + f((a+2 * j * h)))).sum
+    (h * (1 to n/2).map(j => (f(a+2 * j * h - 2) + 4*f(a+2 * j * h - 1) + f((a+2 * j * h)))).sum)/3
 }
 val comp1 = simpCompuesta(3, 5, x => (-1*math.pow(x,2) + 8*x  - 12))
 val comp2 = simpCompuesta(0, 2, x => 3*(math.pow(x,2)))
+val comp3 = simpCompuesta(-1, 1, x => (x + 2*math.pow(x,2) - math.pow(x,3) + 5*math.pow(x,4)))
+val comp4 = simpCompuesta(1, 2, x=> (2*x + 1)/(math.pow(x,2) + x))
+val comp5 = simpCompuesta(0, 1, x=> math.pow((math.E),x))
+val comp6 = simpCompuesta(2, 3, x=>(1/(math.sqrt(x-1))))
+val comp7 = simpCompuesta(0, 1, x=> (1/(1+math.pow(x,2))))
+val comp8 = simpCompuesta(0, 1, x=> 1/(1 + (math.pow(x, 2))))
+
+val ec1 = calcularError(7.33, comp1)
+val ec2 = calcularError(8, comp2)
+val ec3 = calcularError(3.33, comp3)
+val ec4 = calcularError(3.33, comp3)
+val ec5 = calcularError(1.09861, comp4)
+val ec6 = calcularError(1.71828, comp5)
+val ec7 = calcularError(0.828427,comp6)
+val ec8 = calcularError(0.785398, comp7)
