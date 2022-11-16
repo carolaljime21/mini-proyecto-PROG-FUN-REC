@@ -25,9 +25,14 @@ val es8 = calcularError(0.785398, f7)
   def simpCompuesta(a:Double, b:Double, f:Double => Double) : Double = {
     val n = 2
     val h = (b-a)/n
-    
-    (h * (1 to n/2).map(j => (f(a+2 * j * h - 2) + 4*f(a+2 * j * h - 1) + f((a+2 * j * h)))).sum)/3
+    val x : List[Double] = List(a)
+    val s = 0.0
+    val j = (1 to n).map(c => x.+:(a+h*c))
+      for(j <- 1 to n/2) s = s + f(x.apply(2*j-2)) + 4*f(x.apply(2*j-1)) + f(x.apply(2*j))
+
+    return (s * h) / 3
 }
+
 val comp1 = simpCompuesta(3, 5, x => (-1*math.pow(x,2) + 8*x  - 12))
 val comp2 = simpCompuesta(0, 2, x => 3*(math.pow(x,2)))
 val comp3 = simpCompuesta(-1, 1, x => (x + 2*math.pow(x,2) - math.pow(x,3) + 5*math.pow(x,4)))
@@ -45,3 +50,5 @@ val ec5 = calcularError(1.09861, comp4)
 val ec6 = calcularError(1.71828, comp5)
 val ec7 = calcularError(0.828427,comp6)
 val ec8 = calcularError(0.785398, comp7)
+
+//SIMPSON EXTENDIDA
