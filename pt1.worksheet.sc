@@ -53,10 +53,10 @@ val erc7 = calcularError(0.828427, comp7)
 
 //SIMPSON EXTENDIDA ----------------------------------------------------------------------------------
 def simpExtendida(a: Double, b: Double, f: Double => Double) : Double = {
-  val n = 2 * (b-a)
-  val h = ((b-a)/n)
-  val i = f(a) + 4 * (1 to (n-1).toInt by 2).map(c => f(a + c * h)).sum //SUMATORIA IMPAR
-  val j = f(b) + 2 * (2 to (n-2).toInt by 2).map(c => f(a + c * h)).sum //SUMATORIA PAR
+  val nIntervalos = 2 * (b-a)
+  val h = ((b-a)/nIntervalos)
+  val i = f(a) + 4 * (1 to (nIntervalos-1).toInt by 2).map(c => f(a + c * h)).sum //SUMATORIA IMPAR
+  val j = f(b) + 2 * (2 to (nIntervalos-2).toInt by 2).map(c => f(a + c * h)).sum //SUMATORIA PAR
 
   //FORMULA FINAL
   (h*(i+j))/3
@@ -77,5 +77,4 @@ val ere4 = calcularError(3.33, ex4)
 val ere5 = calcularError(1.09861, ex5)
 val ere6 = calcularError(1.71828, ex6)
 val ere7 = calcularError(0.828427,ex7)
-// -------------------------------------------------------------------------------------------------
 
