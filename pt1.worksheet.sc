@@ -27,12 +27,11 @@ val ers7 = calcularError(0.828427,s7)
 //SIMPSON 1/3 COMPUESTA ------------------------------------------------------------------------------
 def simpCompuesta(a: Double, b: Double, f: Double => Double) : Double = {
   val nIntervalos = 2
-  val h = (b-a)/nIntervalos
-  val varx = (j: Double) => (a+(j*h))
-  val x = (c: Double) => f(varx(2*c-2) + 4*f(varx(2*c-1)) + f(varx(2*c)))
+  val h = ((b-a)/nIntervalos)
+  val x = (1 to nIntervalos/2).map(j => (f(a)+2*j*h-2) + 4*f(a+2*j*h-1)+f(a+2*j*h)).sum
 
   //FORMULA FINAL
-  (1 to 2).map(x(_))((h).toInt/3)
+  (h * x)/3
 }
 
 val comp1 = simpCompuesta(3, 5, x => (-1*math.pow(x,2) + 8*x  - 12))
@@ -77,4 +76,4 @@ val ere4 = calcularError(3.33, ex4)
 val ere5 = calcularError(1.09861, ex5)
 val ere6 = calcularError(1.71828, ex6)
 val ere7 = calcularError(0.828427,ex7)
-
+// -------------------------------------------------------------------------------------------------
